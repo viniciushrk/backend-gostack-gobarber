@@ -1,13 +1,12 @@
-// import {isEqual} from 'date-fns';
+/* eslint-disable @typescript-eslint/no-used-vars */
+// eslint-disable-next-line @typescript-eslint/no-used-vars
+
+import { EntityRepository, Repository } from 'typeorm';
 import Appointment from '../models/Appointment';
-import {EntityRepository,Repository} from 'typeorm';
-// interface CreateAppointmentDTO{
-//     provider: string,
-//     date:Date,
-// }
+
 @EntityRepository(Appointment)
-class AppointmentsRepository extends Repository<Appointment>{
-    private appointments : Appointment[];
+class AppointmentsRepository extends Repository<Appointment> {
+    private appointments: Appointment[];
 
     // constructor (){
     //     this.appointments = [];
@@ -18,18 +17,16 @@ class AppointmentsRepository extends Repository<Appointment>{
     //     return this.appointments;
     // }
 
-    public async findByDate(date:Date):Promise<Appointment | null>{
+    public async findByDate(date: Date): Promise<Appointment | null> {
         // const findAppointment = this.appointments.find(appointment=>
         //     isEqual(date,appointment.date),
         // );
         const findAppointment = await this.findOne({
-            where:{date},
-        })
+            where: { date },
+        });
 
-        return findAppointment || null ;
+        return findAppointment || null;
     }
-
-
 
     // public create({provider,date}:CreateAppointmentDTO):Appointment{
     //     const appointment = new Appointment({provider,date});

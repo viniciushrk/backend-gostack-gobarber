@@ -1,8 +1,9 @@
-class AppError{
-    public readonly message:string;
-    public readonly statusCode:number;
+class AppError {
+    public readonly message: string;
 
-    constructor(message:string, statusCode = 400){
+    public readonly statusCode: number;
+
+    constructor(message: string, statusCode = 400) {
         this.message = message;
         this.statusCode = statusCode;
     }
