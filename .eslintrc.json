@@ -1,7 +1,8 @@
 {
     "env": {
         "es6": true,
-        "node": true
+        "node": true,
+        "jest": true
     },
     "extends": [
         "airbnb-base",
@@ -26,11 +27,12 @@
         "prettier/prettier":"error",
         "class-methods-use-this":"off",
         "@typescript-eslint/camelcase":"off",
+        "no-useless-constructor":"off",
         "no-shadow":"off",
         "camelcase":"off",
-        "@typescript-eslint/no-used-vars":["error",{
-            "argsIngnorePattern":"_"
-        }],
+        "no-unused-vars": "off",
+        "@typescript-eslint/no-used-vars":"off",
+        "@typescript-eslint/interface-name-prefix":["error",{"prefixWithI":"always"}],
         "import/extensions": [
             "error",
             "ignorePackages",
