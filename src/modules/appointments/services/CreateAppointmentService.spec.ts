@@ -24,15 +24,17 @@ describe('CreateAppointment', () => {
             fakeAppointmentsRepository,
         );
 
-        const appointmentDate = new Date(2020, 4,10,11);
+        const appointmentDate = new Date(2020, 4, 10, 11);
         await createAppointment.execute({
             date: appointmentDate,
             provider_id: '123',
         });
 
-        expect(createAppointment.execute({
+        await expect(
+            createAppointment.execute({
                 date: appointmentDate,
                 provider_id: '123',
-            })).rejects.toBeInstanceOf( AppError)
+            }),
+        ).rejects.toBeInstanceOf(AppError);
     });
 });

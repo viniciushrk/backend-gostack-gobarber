@@ -9,13 +9,13 @@ describe('CreateUSer', () => {
         const fakeHashProvider = new FakeHashProvider();
         const createUser = new CreateUserService(
             fakeUsersRepository,
-            fakeHashProvider
+            fakeHashProvider,
         );
 
         const user = await createUser.execute({
-            name:'vinixius',
-            email:'vinicius@gmail.com',
-            password:'123456',
+            name: 'vinixius',
+            email: 'vinicius@gmail.com',
+            password: '123456',
         });
 
         expect(user).toHaveProperty('id');
@@ -26,21 +26,21 @@ describe('CreateUSer', () => {
         const fakeHashProvider = new FakeHashProvider();
         const createUser = new CreateUserService(
             fakeUsersRepository,
-            fakeHashProvider
+            fakeHashProvider,
         );
 
         await createUser.execute({
-            name:'vinicius',
-            email:'vinicius@gmail.com',
-            password:'123456',
+            name: 'vinicius',
+            email: 'vinicius@gmail.com',
+            password: '123456',
         });
 
-        expect(createUser.execute({
-            name:'vinicius',
-            email:'vinicius@gmail.com',
-            password:'123456',
-        }),
+        await expect(
+            createUser.execute({
+                name: 'vinicius',
+                email: 'vinicius@gmail.com',
+                password: '123456',
+            }),
         ).rejects.toBeInstanceOf(AppError);
     });
-
 });

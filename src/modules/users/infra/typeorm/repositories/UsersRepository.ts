@@ -1,7 +1,7 @@
 import { EntityRepository, getRepository, Repository } from 'typeorm';
+import ICreateUserDTO from '@modules/users/dtos/ICreateUserDTO';
 import User from '../entities/User';
 import IUsersRepository from '../../../repositories/IUsersRepository';
-import ICreateUserDTO from '@modules/users/dtos/ICreateUserDTO';
 
 class UsersRepository implements IUsersRepository {
     private ormRepository: Repository<User>;
@@ -9,6 +9,7 @@ class UsersRepository implements IUsersRepository {
     constructor() {
         this.ormRepository = getRepository(User);
     }
+
     public async findById(id: string): Promise<User | undefined> {
         const user = await this.ormRepository.findOne(id);
 
@@ -17,7 +18,7 @@ class UsersRepository implements IUsersRepository {
 
     public async findByEmail(email: string): Promise<User | undefined> {
         const user = await this.ormRepository.findOne({
-            where: { email: email },
+            where: { email },
         });
 
         return user;
