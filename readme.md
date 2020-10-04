@@ -82,3 +82,5 @@
 -   O Usuário não pode agendar em um horário já ocupado;
 -   O usuário não pode agendar em um horário que já passou;
 -   O usuário não pode agendar serviço consigo mesmo;
+
+<!-- "@typescript-eslint/interface-name-prefix":["error",{"prefixWithI":"always"}], -->
