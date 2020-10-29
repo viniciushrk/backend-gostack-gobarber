@@ -1,5 +1,5 @@
 import { injectable, inject } from 'tsyringe';
-import { getHours, isAfter } from 'date-fns';
+import { getHours, isAfter, isBefore } from 'date-fns';
 
 import User from '@modules/users/infra/typeorm/entities/User';
 import IAppointmentsRepository from '../repositories/IAppointmentsRepository';
@@ -51,7 +51,22 @@ class ListProviderDayAvailabilityService {
                 appointment => getHours(appointment.date) === hour,
             );
 
+            console.log(hasAppointmentInHour);
+
             const compareDate = new Date(year, month - 1, day, hour);
+            console.log(
+                'data atual: ',
+                compareDate,
+                'data digitada:',
+                currentDate,
+            );
+
+            console.log(
+                'compara datas',
+                isAfter(currentDate, compareDate),
+                // 'hasAppointmentInHour',
+                // hasAppointmentInHour,
+            );
 
             return {
                 hour,
