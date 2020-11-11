@@ -9,11 +9,14 @@ export default class UserAvatarController {
         response: Response,
     ): Promise<Response> {
         const updateUserAvatar = container.resolve(UpdateUserAvatarService);
+        console.log('chamou');
 
         const user = await updateUserAvatar.execute({
             user_id: request.user.id,
             avatarFilename: request.file.filename,
         });
+
+        console.log('mudou');
 
         return response.json(classToClass(user));
     }

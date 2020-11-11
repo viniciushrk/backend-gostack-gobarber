@@ -20,6 +20,8 @@ export default class ProfileController {
     ): Promise<Response> {
         const { name, email, old_password, password } = request.body;
         const user_id = request.user.id;
+
+        console.log('request', request.body);
         const updateProfile = container.resolve(UpdateProfileService);
 
         const user = await updateProfile.execute({
