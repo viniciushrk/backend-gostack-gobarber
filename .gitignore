@@ -4,8 +4,8 @@ node_modules/
 build/
 template/
 coverage
-.env
-ormconfig.json
+# .env
+# ormconfig.json
 
 tmp/*
 !tmp/.gitkeep
